@@ -4,33 +4,33 @@
  # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
  # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
  #}
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ index.portfolio.title ? index.portfolio.title : "Portfolio" }}</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-{{ index.portfolio.divider ? index.portfolio.divider : 'star' }}"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    {% for portfolio_item in portfolio_items %}
-                    {% set classes = ["col-md-6", "col-lg-4"] %}
-                        {% if not loop.last %}
-                            {% set classes = classes|merge(["mb-5"]) %}
-                            {% if loop.revindex <= (loop.length - 1) % 3 + 1 %}
-                                {% if loop.revindex == 3 %}
-                                    {% set classes = classes|merge(["mb-lg-0"]) %}
-                                {% elseif loop.revindex == 2 %}
-                                    {% if loop.index == 2 %}
-                                        {% set classes = classes|merge(["mb-lg-0"]) %}
-                                    {% else %}
-                                        {% set classes = classes|merge(["mb-md-0"]) %}
-                                    {% endif %}
-                                {% endif %}
+<!-- Portfolio Section-->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ index.portfolio.title ? index.portfolio.title : "Portfolio" }}</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-{{ index.portfolio.divider ? index.portfolio.divider : 'star' }}"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Portfolio Grid Items-->
+        <div class="row justify-content-center">
+            {% for portfolio_item in portfolio_items %}
+            {% set classes = ["col-md-6", "col-lg-4"] %}
+                {% if not loop.last %}
+                    {% set classes = classes|merge(["mb-5"]) %}
+                    {% if loop.revindex <= (loop.length - 1) % 3 + 1 %}
+                        {% if loop.revindex == 3 %}
+                            {% set classes = classes|merge(["mb-lg-0"]) %}
+                        {% elseif loop.revindex == 2 %}
+                            {% if loop.index == 2 %}
+                                {% set classes = classes|merge(["mb-lg-0"]) %}
+                            {% else %}
+                                {% set classes = classes|merge(["mb-md-0"]) %}
+                            {% endif %}
+                        {% endif %}
                             {% elseif loop.revindex == 2 and loop.index == 3 %}
                                 {% set classes = classes|merge(["mb-md-0","mb-lg-5"]) %}
                             {% endif %}
