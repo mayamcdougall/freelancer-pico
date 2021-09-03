@@ -3,6 +3,12 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
 */
+/*!
+ * Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ * Ported by Maya McDougall (https://github.com/mayamcdougall)
+ * Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ * Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ */
 //
 // Scripts
 // 
@@ -31,7 +37,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
+    if (mainNav && !single_page_mode) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
             offset: 72,
