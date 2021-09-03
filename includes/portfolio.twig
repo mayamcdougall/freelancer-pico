@@ -1,70 +1,51 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ index.portfolio.title ? index.portfolio.title : "Portfolio" }}</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-icon"><i class="fas fa-{{ index.portfolio.divider ? index.portfolio.divider : 'star' }}"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    {% for portfolio_item in portfolio_items %}
+                    {% set classes = ["col-md-6", "col-lg-4"] %}
+                        {% if not loop.last %}
+                            {% set classes = classes|merge(["mb-5"]) %}
+                            {% if loop.revindex <= (loop.length - 1) % 3 + 1 %}
+                                {% if loop.revindex == 3 %}
+                                    {% set classes = classes|merge(["mb-lg-0"]) %}
+                                {% elseif loop.revindex == 2 %}
+                                    {% if loop.index == 2 %}
+                                        {% set classes = classes|merge(["mb-lg-0"]) %}
+                                    {% else %}
+                                        {% set classes = classes|merge(["mb-md-0"]) %}
+                                    {% endif %}
+                                {% endif %}
+                            {% elseif loop.revindex == 2 and loop.index == 3 %}
+                                {% set classes = classes|merge(["mb-md-0","mb-lg-5"]) %}
+                            {% endif %}
+                        {% endif %}
+
+                    <!-- {{ " Portfolio Item  " ~ loop.index ~ " " }} -->
+                    <div class="{{ classes|join(" ") }}">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal{{ loop.index }}">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
+                            <img class="img-fluid" src="{{ portfolio_item.meta.thumbnail ? portfolio_item.meta.thumbnail|url : portfolio_item.meta.image ? portfolio_item.meta.image|url : random(config.theme_config.demo.portfolio_items).meta.image|url }}" alt="..." />
                         </div>
                     </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="..." />
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
