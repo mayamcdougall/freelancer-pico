@@ -1,0 +1,28 @@
+{% macro markdown_by_paragraph(content, mode) %}
+    {% set content_array = [] %}
+    {% for paragraph in content|split("\n") %}
+        {% if paragraph %}
+            {% set content_array = content_array|merge([paragraph]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% for paragraph in content_array %} {# small mb-0 #}
+        {% set p_class = [] %}
+        {% if mode == "footer" or mode == "about" %}{% set p_class = p_class|merge(["lead"]) %}{% endif %}
+        {% if mode == "copyright" %}{% set p_class = p_class|merge(["small"]) %}{% endif %}
+        {% if mode == "footer" or mode == "copyright" %}{% set p_class = p_class|merge(["mb-0"]) %}{% endif %}
+
+        {% if mode == "about" %}
+            {% set div_class = ["col-lg-4"] %}
+            {% if loop.first %}
+                {% set div_class = div_class|merge(["ms-auto"]) %}
+            {% endif %}
+            {% if loop.last %}
+                {% set div_class = div_class|merge(["me-auto"]) %}
+            {% endif %}
+            <div class="{{ div_class|join(" ") }}">
+        {% endif %}
+        <p class="{{ p_class|join(" ") }}">{{ paragraph|markdown(singleLine=true) }}</p>
+        {{ mode == "about" ? "</div>" }}
+    {% endfor %}
+{% endmacro %}

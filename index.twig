@@ -1,0 +1,66 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+{% set index = pages["index"].meta %}
+
+{% if current_page.id != "index" %}
+    {% set single_page_mode = true %}
+{% endif %}
+
+{% if not index.portfolio.disabled %}
+    {% set portfolio_items = [] %}
+    {% for page in pages() if page.meta.portfolio_item and not page.hidden %}
+        {% set portfolio_items = portfolio_items|merge([page]) %}
+    {% endfor %}
+
+    {% if not portfolio_items %}
+        {% set portfolio_items = config.theme_config.demo.portfolio_items %}
+    {% endif %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include "includes/head.twig" %}
+
+    <body id="page-top">
+
+        {% if not index.nav.disabled %}
+            {% include "includes/navigation.twig" %}
+        {% endif %}
+
+        {% include "includes/yaml_error.twig" %}
+
+        {% if not index.header.disabled and not single_page_mode %}
+            {% include "includes/header.twig" %}
+        {% elseif not index.nav.disabled %}
+            <div class="mb-5 pb-5 pt-2"></div>
+        {% endif %}
+
+        {% if single_page_mode %}
+            {% include "includes/content.twig" %}
+        {% endif %}
+
+        {% if not index.portfolio.disabled and not single_page_mode %}
+            {% include "includes/portfolio.twig" %}
+        {% endif %}
+
+        {% if not index.about.disabled and not single_page_mode %}
+            {% include "includes/about.twig" %}
+        {% endif %}
+
+        {% if not index.contact.disabled and not single_page_mode %}
+            {% include "includes/contact.twig" %}
+        {% endif %}
+
+        {% include "includes/footer.twig" %}
+
+        {% if not index.portfolio.disabled and not single_page_mode %}
+            {% include "includes/portfolio_modals.twig" %}
+        {% endif %}
+
+    </body>
+</html>

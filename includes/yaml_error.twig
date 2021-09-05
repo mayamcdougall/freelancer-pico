@@ -1,0 +1,25 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+{% set pages_with_error = [] %}
+{% for page in pages(depthOffset= -1) if page.meta.YAML_ParseError %}
+    {% set pages_with_error = pages_with_error|merge([{"id": page.id, "error": page.meta.YAML_ParseError}]) %}
+{% endfor %}
+
+{% for page in pages_with_error %}
+    {% if loop.first %}
+        <div class="fixed-top mt-5">
+            <div class="container mt-5 pt-3">
+    {% endif %}
+    <div class="alert alert-danger">
+        <h1 class="h6"><i class="fas fa-exclamation-triangle me-2"></i><strong>YAML Header Error</strong> in <a href="{{ page.id }}">{{ page.id }}</a>:</h1>
+        <p class="mb-0">{{ page.error }}</p>
+    </div>
+    {% if loop.last %}
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

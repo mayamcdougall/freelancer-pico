@@ -1,0 +1,57 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+{% macro actions(actions, mode, include_close_button = true) %}
+    {% set has_actions = actions ? true : false %}
+    {{ has_actions ? '<div class="text-center mt-4">' }}
+        {% if mode == "portfolio" and include_close_button %}
+            {% set close_button = {"icon": "times", "content": "Close Window", "color": "primary", "outline": false, "close_button": true} %}
+            {% set actions = actions ? actions|merge([close_button]) : [close_button] %}
+        {% endif %}
+
+        {% for action in actions %}
+            {% set classes = ["btn"] %}
+            {% if mode == "social" %}
+                {% set classes = classes|merge(["btn-social","mx-1"]) %}
+            {% else %}
+                {% set classes = classes|merge(["mx-1", "my-1"]) %}
+            {% endif %}
+            {% set size = "btn-xl" %}
+            {% set color = mode in ["about", "social"] ? "light" : "primary" %}
+            {% set outline = mode in ["about", "social"] ? true : false %}
+
+            {% if action.size in ["small", "large", "xlarge"] %}
+                {% set size = action.size|replace({"small": "btn-sm", "large": "btn-lg", "xlarge": "btn-xl"}) %}
+            {% endif %}
+
+            {% if action.color in ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"] %}
+                {% set color = action.color %}
+            {% endif %}
+
+            {% if action.outline is defined and action.outline in [true, false] %}
+                {% set outline = action.outline %}
+            {% endif %}
+
+            {% if mode != "social" and not action.close_button %}{% set classes = classes|merge([size]) %}{% endif %}
+
+            {% set classes = classes|merge([["btn-", (outline ? "outline-"), color ]|join]) %}
+
+            {% if action.disabled %}{% set classes = classes|merge(["disabled"]) %}{% endif %}
+
+            {% if action.close_button %}
+                {% set classes = classes|merge(["d-block", "mx-auto", "mt-4"]) %}
+            {% endif %}
+
+            {{ action.close_button ? '<button data-bs-dismiss="modal"' : "<a" }} class="{{ classes|join(" ") }}" {% if action.link and not action.disabled %} href="{{ action.link|url }}" {% endif %}>
+                {% if action.icon %}
+                    <i class="{{ [(action.brands ? 'fab' : 'fas'), 'fa-fw', ('fa-' ~ action.icon), (mode != 'social' ? 'me-2')]|join(' ')}}"></i>
+                {% endif %}
+                {{ mode != "social" ? action.content }}
+            {{ action.close_button ? "</button>" : "</a>" }}
+
+        {% endfor %}
+    {{ has_actions ? "</div>" }}
+{% endmacro %}

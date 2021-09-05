@@ -1,0 +1,26 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+{% from "includes/markdown_by_paragraph.twig" import markdown_by_paragraph %}
+{% from "includes/actions.twig" import actions %}
+<!-- Content Section-->
+<section class="page-section content" id="content">
+    <div class="container">
+    <div class="mx-lg-5 px-lg-5">
+        <!-- Content Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ meta.title ? meta.title : "Page Title" }}</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-{{ meta.divider ? meta.divider : 'star' }}"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        {% if meta.image %}<img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="..." />{% endif %}
+        {{ content }}
+        {{ actions(meta.actions, "single_page") }}
+    </div>
+    </div>
+</section>
