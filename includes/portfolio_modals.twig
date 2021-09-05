@@ -23,13 +23,13 @@
                                     <div class="divider-custom-line"></div>
                                     <div class="divider-custom-icon"><i class="fas fa-{{portfolio_item.meta.divider ? portfolio_item.meta.divider : 'star' }}"></i></div>
                                     <div class="divider-custom-line"></div>
-                                        </div>
-                                        <!-- Portfolio Modal - Image-->
-                                        <img class="img-fluid rounded mb-5" src="{{ portfolio_item.meta.image|url }}" alt="..." />
-                                        <!-- Portfolio Modal - Text-->
-                                        {{ portfolio_item.meta.demo_content ? portfolio_item.meta.demo_content|markdown : portfolio_item.id|content }}
-                                        {{ actions(portfolio_item.meta.actions, "portfolio", index.portfolio.disable_close_buttons ? false : true) }}
-                                    </div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img class="img-fluid rounded mb-5" src="{{ portfolio_item.meta.image|url }}" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                {{ portfolio_item.meta.demo_content ? portfolio_item.meta.demo_content|markdown : portfolio_item.id|content }}
+                                {{ actions(portfolio_item.meta.actions, "portfolio", index.portfolio.disable_close_buttons ? false : true) }}
+                            </div>
                                 </div>
                             </div>
                         </div>
