@@ -7,31 +7,31 @@
 {% from "includes/markdown_by_paragraph.twig" import markdown_by_paragraph %}
 {% from "includes/actions.twig" import actions %}
 {% if not (index.location.disabled and index.social.disabled and index.footer.disabled) %}
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    {% set footer_items = [] %}
-                    {% for footer_item in [not index.location.disabled ? "location", not index.social.disabled ? "social", not index.footer.disabled ? "footer"] %}
-                        {% if footer_item %}{% set footer_items = footer_items|merge([footer_item]) %}{% endif %}
-                    {% endfor %}
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                {% set footer_items = [] %}
+                {% for footer_item in [not index.location.disabled ? "location", not index.social.disabled ? "social", not index.footer.disabled ? "footer"] %}
+                    {% if footer_item %}{% set footer_items = footer_items|merge([footer_item]) %}{% endif %}
+                {% endfor %}
 
-                    {% for footer_item in footer_items %}
-                        {% set class = ["col-lg-4"] %}
-                        {% if not loop.last %}
-                            {% set class = class|merge(["mb-5", "mb-lg-0"]) %}
-                        {% endif %}
+                {% for footer_item in footer_items %}
+                    {% set class = ["col-lg-4"] %}
+                    {% if not loop.last %}
+                        {% set class = class|merge(["mb-5", "mb-lg-0"]) %}
+                    {% endif %}
 
-                        <!-- {{ footer_item == "location" ? "Footer Location" : footer_item == "social" ? "Footer Social Icons" : footer_item == "footer" ? "Footer About Text" }} -->
-                        <div class="{{ class|join(" ") }}">
-                            <h4 class="text-uppercase mb-4">
-                                {% if footer_item == "location" %}{{ index.location.title ? index.location.title : "Location" }}{% endif %}
-                                {% if footer_item == "social" %}{{ index.social.title ? index.social.title : "Around the Web" }}{% endif %}
-                                {% if footer_item == "footer" %}{{ index.footer.title ? index.footer.title : "About Me" }}{% endif %}
-                            </h4>
-                            {% if footer_item == "location" %}{{ markdown_by_paragraph(index.location.content ? index.location.content : config.theme_config.demo.footer.location.content, "footer") }}{% endif %}
-                            {% if footer_item == "social" %}{{ actions(index.social.items ? index.social.items : config.theme_config.demo.footer.social.items, "social") }}{% endif %}
-                            {% if footer_item == "footer" %}{{ markdown_by_paragraph(index.footer.content ? index.footer.content : config.theme_config.demo.footer.content, "footer") }}{% endif %}
+                    <!-- {{ footer_item == "location" ? "Footer Location" : footer_item == "social" ? "Footer Social Icons" : footer_item == "footer" ? "Footer About Text" }} -->
+                    <div class="{{ class|join(" ") }}">
+                        <h4 class="text-uppercase mb-4">
+                            {% if footer_item == "location" %}{{ index.location.title ? index.location.title : "Location" }}{% endif %}
+                            {% if footer_item == "social" %}{{ index.social.title ? index.social.title : "Around the Web" }}{% endif %}
+                            {% if footer_item == "footer" %}{{ index.footer.title ? index.footer.title : "About Me" }}{% endif %}
+                        </h4>
+                        {% if footer_item == "location" %}{{ markdown_by_paragraph(index.location.content ? index.location.content : config.theme_config.demo.footer.location.content, "footer") }}{% endif %}
+                        {% if footer_item == "social" %}{{ actions(index.social.items ? index.social.items : config.theme_config.demo.footer.social.items, "social") }}{% endif %}
+                        {% if footer_item == "footer" %}{{ markdown_by_paragraph(index.footer.content ? index.footer.content : config.theme_config.demo.footer.content, "footer") }}{% endif %}
                         </div>
                     {% endfor %}
                 </div>
