@@ -1,0 +1,23 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{{ index.header.avatar ? index.header.avatar|url : theme_url ~ "/assets/img/avataaars.svg" }}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">{{ index.title ? index.title : site_title }}</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-{{ index.header.divider ? index.header.divider : 'star' }}"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">{{ index.header.skills ? index.header.skills : "Graphic Artist - Web Designer - Illustrator"}}</p>
+    </div>
+</header>

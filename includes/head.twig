@@ -1,0 +1,56 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="{{ (meta.description ? meta.description : index.description ? index.description : index.header.skills ? index.header.skills : index.about.content ? index.about.content[:200])|striptags }}" />
+    {% if index.robots %}<meta name="robots" content="{{ index.robots }}">{% endif %}
+    <link rel="canonical" href="{{ current_page.url }}" />
+    <title>{{ meta.title ? meta.title ~ " | " }}{{ index.title ? index.title : site_title }}</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ index.favicon ? index.favicon|url : theme_url ~ "/assets/favicon.ico" }}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ theme_url }}/css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script> var single_page_mode = {{ single_page_mode ? "true" : "false" }};</script>
+    <script src="{{ theme_url }}/js/scripts.js"></script>
+
+    {# Contact Form Scripts #}
+    {% if index.contact.form.enabled and not index.contact.disabled and not single_page_mode %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="{{ theme_url }}/js/contact.js"></script>
+    {% endif %}
+
+    {# User CSS & Fonts #}
+    {% if index.css %}
+        {% set stylesheets = index.css is iterable ? index.css : [index.css] %}
+        {% for stylesheet in stylesheets %}
+            <link rel="stylesheet" href="{{ stylesheet|url }}" type="text/css">
+        {% endfor %}
+    {% endif %}
+
+    {% if index.fonts %}
+        {% set fonts = index.fonts is iterable ? index.fonts : [index.fonts] %}
+        {% for font in fonts %}
+            <link href='{{ font|url }}' rel='stylesheet' type='text/css'>
+        {% endfor %}
+    {% endif %}
+
+    {# Open Graph #}
+    <meta property="og:title" content="{{ meta.title ? meta.title ~ " | " }}{{ index.title ? index.title : site_title }}">
+    <meta property="og:description" content="{{ (meta.description ? meta.description : index.description ? index.description : index.header.skills ? index.header.skills : index.about.content ? index.about.content[:200])|striptags }}">
+    <meta property="og:url" content="{{ current_page.url }}">
+    <meta property="og:type" content="website">
+    {% if index.og_image %}<meta property="og:image" content="{{ index.og_image|url }}">{% endif %}
+</head>

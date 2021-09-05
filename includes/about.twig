@@ -1,0 +1,27 @@
+{#!
+ # Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+{% from "includes/markdown_by_paragraph.twig" import markdown_by_paragraph %}
+{% from "includes/actions.twig" import actions %}
+<!-- About Section-->
+<section class="page-section bg-primary text-white mb-0" id="about">
+    <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">{{ index.about.title ? index.about.title : "About" }}</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-{{ index.about.divider ? index.about.divider : 'star' }}"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            {{ markdown_by_paragraph(index.about.content ? index.about.content : config.theme_config.demo.about.content, "about") }}
+        </div>
+        <!-- About Section Buttons-->
+        {{ actions(index.about.actions ? index.about.actions : not index.about.content ? config.theme_config.demo.about.actions, "about") }}
+    </div>
+</section>
