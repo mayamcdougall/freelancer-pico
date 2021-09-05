@@ -91,10 +91,10 @@
                                 {% set classes = classes|merge(["mb-lg-0"]) %}
                             {% else %}
                                 {% set classes = classes|merge(["mb-md-0"]) %}
-                                    {% endif %}
-                                {% endif %}
-                            {% elseif loop.revindex == 2 and loop.index == 3 %}
-                                {% set classes = classes|merge(["mb-md-0","mb-lg-5"]) %}
+                            {% endif %}
+                        {% endif %}
+                    {% elseif loop.revindex == 2 and loop.index == 3 %}
+                        {% set classes = classes|merge(["mb-md-0","mb-lg-5"]) %}
                             {% endif %}
                         {% endif %}
                         <div class="{{ classes|join(" ") }}">
