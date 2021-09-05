@@ -4,25 +4,25 @@
  # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
  # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
  #}
-        <!-- Portfolio Modals-->
-        {% from "includes/actions.twig" import actions %}
-        {% for portfolio_item in portfolio_items %} 
-            <!--{{ " Portfolio Modal  " ~ loop.index ~ " " }}-->
-            <div class="portfolio-modal modal fade" id="portfolioModal{{ loop.index }}" tabindex="-1" aria-labelledby="portfolioModal{{ loop.index }}" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                        <div class="modal-body text-center pb-5">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <!-- Portfolio Modal - Title-->
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{ portfolio_item.meta.title }}</h2>
-                                        <!-- Icon Divider-->
-                                        <div class="divider-custom">
-                                            <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-{{portfolio_item.meta.divider ? portfolio_item.meta.divider : 'star' }}"></i></div>
-                                            <div class="divider-custom-line"></div>
+<!-- Portfolio Modals-->
+{% from "includes/actions.twig" import actions %}
+{% for portfolio_item in portfolio_items %} 
+    <!--{{ " Portfolio Modal  " ~ loop.index ~ " " }}-->
+    <div class="portfolio-modal modal fade" id="portfolioModal{{ loop.index }}" tabindex="-1" aria-labelledby="portfolioModal{{ loop.index }}" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body text-center pb-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{ portfolio_item.meta.title }}</h2>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-{{portfolio_item.meta.divider ? portfolio_item.meta.divider : 'star' }}"></i></div>
+                                    <div class="divider-custom-line"></div>
                                         </div>
                                         <!-- Portfolio Modal - Image-->
                                         <img class="img-fluid rounded mb-5" src="{{ portfolio_item.meta.image|url }}" alt="..." />
