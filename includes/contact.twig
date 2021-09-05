@@ -95,15 +95,15 @@
                         {% endif %}
                     {% elseif loop.revindex == 2 and loop.index == 3 %}
                         {% set classes = classes|merge(["mb-md-0","mb-lg-5"]) %}
-                            {% endif %}
-                        {% endif %}
-                        <div class="{{ classes|join(" ") }}">
-                            <div class="d-flex flex-column align-items-center">
-                                <div class="icon-contact mb-3"><i class="{{ item.brands ? "fab" : "fas" }} fa-{{ item.icon }}"></i></div>
-                                <div class="text-muted">{{ item.method }}</div>
-                                {% if item.link %}<a href="{{ item.link|url }}"{% else %}<div{% endif %} class="lead font-weight-bold">{{ item.content }}{{ item.link ? "</a>" : "</div>" }}
-                            </div>
-                        </div>
+                    {% endif %}
+                {% endif %}
+                <div class="{{ classes|join(" ") }}">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="icon-contact mb-3"><i class="{{ item.brands ? "fab" : "fas" }} fa-{{ item.icon }}"></i></div>
+                        <div class="text-muted">{{ item.method }}</div>
+                        {% if item.link %}<a href="{{ item.link|url }}"{% else %}<div{% endif %} class="lead font-weight-bold">{{ item.content }}{{ item.link ? "</a>" : "</div>" }}
+                    </div>
+                </div>
                         {% endfor %}
                     </div>
                 {% endif %}
