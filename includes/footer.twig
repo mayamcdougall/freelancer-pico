@@ -32,9 +32,9 @@
                         {% if footer_item == "location" %}{{ markdown_by_paragraph(index.location.content ? index.location.content : config.theme_config.demo.footer.location.content, "footer") }}{% endif %}
                         {% if footer_item == "social" %}{{ actions(index.social.items ? index.social.items : config.theme_config.demo.footer.social.items, "social") }}{% endif %}
                         {% if footer_item == "footer" %}{{ markdown_by_paragraph(index.footer.content ? index.footer.content : config.theme_config.demo.footer.content, "footer") }}{% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
+            </div>
             </div>
         </footer>
 {% endif %}
