@@ -1,0 +1,79 @@
+#!
+# Freelancer for Pico v2.0.0 (https://github.com/mayamcdougall/freelancer-pico)
+# Ported by Maya McDougall (https://github.com/mayamcdougall)
+# Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+# Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+#
+
+api_version: 3                  # Use Pico's latest API version for themes
+
+twig_config:                    # Twig template engine config
+  autoescape: html            # Let Twig escape variables by default
+  strict_variables: false     # If set to true, Twig will bail out when unset variables are being used
+  charset: utf-8              # The charset used by Twig templates
+
+demo:
+  portfolio_items:
+    - meta:
+        title: "Log Cabin"
+        thumbnail: ""
+        image: "%theme_url%/assets/img/portfolio/cabin.png"
+        demo_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam."
+    - meta:
+        title: "Tasty Cake"
+        thumbnail: ""
+        image: "%theme_url%/assets/img/portfolio/cake.png"
+        demo_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam."
+    - meta:
+        title: "Circus Tent"
+        thumbnail: ""
+        image: "%theme_url%/assets/img/portfolio/circus.png"
+        demo_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam."
+    - meta:
+        title: "Controller"
+        thumbnail: ""
+        image: "%theme_url%/assets/img/portfolio/game.png"
+        demo_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam."
+    - meta:
+        title: "Locked Safe"
+        thumbnail: ""
+        image: "%theme_url%/assets/img/portfolio/safe.png"
+        demo_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam."
+    - meta:
+        title: "Submarine"
+        thumbnail: ""
+        image: "%theme_url%/assets/img/portfolio/submarine.png"
+        demo_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam."
+  about:
+    content: |
+      Freelancer is a free HTML theme created by Start Bootstrap and ported to PicoCMS for a streamlined and hassle free user experience. Using this theme in Pico, you can easily generate portfolio items by simply creating new markdown pages!
+      Your site's metadata provides tons of extra customization as well. You can specify your own avatar for the masthead, change the icons in the dividers, the social icons, and most of the text on the page all without touching the theme's code.
+    actions:
+      - icon: download
+        content: Free Download!
+  contact:
+    items:
+    - method: Phone
+      icon: mobile-alt
+      content: (555) 555-555
+      link: tel:555555555
+    - method: Email
+      icon: envelope
+      content: name@example.com
+      link: mailto:name@example.com
+  footer:
+    location:
+      content: |
+        2215 John Daniel Drive 
+        Clark, MO 65243
+    social:
+      items:
+      - icon: facebook-f
+        brands: true
+      - icon: twitter
+        brands: true
+      - icon: linkedin-in
+        brands: true
+      - icon: dribbble
+        brands: true
+    content: Freelance is a free to use, MIT licensed Bootstrap theme created by [Start Bootstrap](http://startbootstrap.com).  Ported to PicoCMS.
