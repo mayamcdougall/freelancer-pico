@@ -35,14 +35,14 @@
                     </div>
                 {% endfor %}
             </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
 {% endif %}
 {% if not index.copyright.disabled %}
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container">
-                {{ markdown_by_paragraph(index.copyright.content ? index.copyright.content|markdown(singleLine=true) : "Copyright &copy; Your Website 2021", "copyright") }}
-            </div>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container">
+            {{ markdown_by_paragraph(index.copyright.content ? index.copyright.content|markdown(singleLine=true) : "Copyright &copy; Your Website 2021", "copyright") }}
+        </div>
         </div>
 {% endif %}
