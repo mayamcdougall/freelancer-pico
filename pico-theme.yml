@@ -53,27 +53,27 @@ demo:
         content: Free Download!
   contact:
     items:
-    - method: Phone
+    - title: Phone
       icon: mobile-alt
       content: (555) 555-555
       link: tel:555555555
-    - method: Email
+    - title: Email
       icon: envelope
       content: name@example.com
       link: mailto:name@example.com
+  location:
+    content: |
+      2215 John Daniel Drive 
+      Clark, MO 65243
+  social:
+    items:
+    - icon: facebook-f
+      brands: true
+    - icon: twitter
+      brands: true
+    - icon: linkedin-in
+      brands: true
+    - icon: dribbble
+      brands: true
   footer:
-    location:
-      content: |
-        2215 John Daniel Drive 
-        Clark, MO 65243
-    social:
-      items:
-      - icon: facebook-f
-        brands: true
-      - icon: twitter
-        brands: true
-      - icon: linkedin-in
-        brands: true
-      - icon: dribbble
-        brands: true
     content: Freelance is a free to use, MIT licensed Bootstrap theme created by [Start Bootstrap](http://startbootstrap.com).  Ported to PicoCMS.

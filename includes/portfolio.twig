@@ -42,7 +42,7 @@
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{ portfolio_item.meta.thumbnail ? portfolio_item.meta.thumbnail|url : portfolio_item.meta.image ? portfolio_item.meta.image|url : random(config.theme_config.demo.portfolio_items).meta.image|url }}" alt="..." />
+                    <img class="img-fluid" src="{{ portfolio_item.meta.thumbnail ? portfolio_item.meta.thumbnail|url : portfolio_item.meta.image ? portfolio_item.meta.image|url : random(config.theme_config.demo.portfolio_items).meta.image|url }}" alt="{{ portfolio_item.meta.thumbnail_alt ? portfolio_item.meta.thumbnail_alt : portfolio_item.meta.title }}" />
                 </div>
             </div>
             {% endfor %}

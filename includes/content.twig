@@ -9,18 +9,18 @@
 <!-- Content Section-->
 <section class="page-section content" id="content">
     <div class="container">
-    <div class="mx-lg-5 px-lg-5">
-        <!-- Content Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ meta.title ? meta.title : "Page Title" }}</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-{{ meta.divider ? meta.divider : 'star' }}"></i></div>
-            <div class="divider-custom-line"></div>
+        <div class="mx-lg-5 px-lg-5">
+            <!-- Content Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ meta.title ? meta.title : current_page.id }}</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-{{ meta.divider ? meta.divider : 'star' }}"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            {% if meta.image %}<img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="{{ meta.image_alt }}" />{% endif %}
+            {{ content }}
+            {{ actions(meta.actions, "single_page") }}
         </div>
-        {% if meta.image %}<img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="..." />{% endif %}
-        {{ content }}
-        {{ actions(meta.actions, "single_page") }}
-    </div>
     </div>
 </section>

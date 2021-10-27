@@ -75,7 +75,7 @@
  
   --bs-primary-dark: #16a085; /* rgb(22,160,133) */ /* Primary RGB * 0.85 */
   --bs-primary-darker: #15967d; /* rgb(21,150,125) */ /* Primary RGB * 0.80 */
-  --bs-primary-darkest: #148d75; /* rgb(20,141,117)  */ /* Primary RGB * 0.75 */
+  --bs-primary-darkest: #148d75; /* rgb(20,141,117) */ /* Primary RGB * 0.75 */
   --bs-primary-lighter-rgb: 60, 198, 171; /* Button Focus Outline */ /* Lighter, faded.  Originally a mix. */
   --bs-primary-lightest: #8ddece;  /* rgb(141,222,206) */ /* Form Focus Highlight */ /* Lighter, faded.  Originally a mix. */
 
@@ -3060,7 +3060,7 @@ textarea.form-control-lg {
   color: var(--bs-white);
   background-color: var(--bs-primary-dark);
   border-color: var(--bs-primary-darker);
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-lighter-rgb), 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: var(--bs-white);
@@ -3068,7 +3068,7 @@ textarea.form-control-lg {
   border-color: var(--bs-primary-darkest);
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary), 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-lighter-rgb), 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: var(--bs-white);

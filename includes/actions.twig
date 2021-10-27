@@ -35,7 +35,7 @@
                 {% set outline = action.outline %}
             {% endif %}
 
-            {% if mode != "social" and not action.close_button %}{% set classes = classes|merge([size]) %}{% endif %}
+            {% if mode != "social" and not action.close_button and action.size != "medium" %}{% set classes = classes|merge([size]) %}{% endif %}
 
             {% set classes = classes|merge([["btn-", (outline ? "outline-"), color ]|join]) %}
 

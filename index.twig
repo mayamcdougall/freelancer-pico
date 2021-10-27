@@ -12,7 +12,7 @@
 
 {% if not index.portfolio.disabled %}
     {% set portfolio_items = [] %}
-    {% for page in pages() if page.meta.portfolio_item and not page.hidden %}
+    {% for page in pages() if not page.hidden %}
         {% set portfolio_items = portfolio_items|merge([page]) %}
     {% endfor %}
 

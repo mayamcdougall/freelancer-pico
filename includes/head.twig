@@ -10,7 +10,7 @@
     <meta name="description" content="{{ (meta.description ? meta.description : index.description ? index.description : index.header.skills ? index.header.skills : index.about.content ? index.about.content[:200])|striptags }}" />
     {% if index.robots %}<meta name="robots" content="{{ index.robots }}">{% endif %}
     <link rel="canonical" href="{{ current_page.url }}" />
-    <title>{{ meta.title ? meta.title ~ " | " }}{{ index.title ? index.title : site_title }}</title>
+    <title>{{ single_page_mode and meta.title ? meta.title ~ " | " }}{{ index.title ? index.title : site_title }}</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ index.favicon ? index.favicon|url : theme_url ~ "/assets/favicon.ico" }}" />
     <!-- Font Awesome icons (free version)-->

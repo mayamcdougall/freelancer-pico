@@ -29,8 +29,8 @@
                             {% if footer_item == "social" %}{{ index.social.title ? index.social.title : "Around the Web" }}{% endif %}
                             {% if footer_item == "footer" %}{{ index.footer.title ? index.footer.title : "About Me" }}{% endif %}
                         </h4>
-                        {% if footer_item == "location" %}{{ markdown_by_paragraph(index.location.content ? index.location.content : config.theme_config.demo.footer.location.content, "footer") }}{% endif %}
-                        {% if footer_item == "social" %}{{ actions(index.social.items ? index.social.items : config.theme_config.demo.footer.social.items, "social") }}{% endif %}
+                        {% if footer_item == "location" %}{{ markdown_by_paragraph(index.location.content ? index.location.content : config.theme_config.demo.location.content, "footer") }}{% endif %}
+                        {% if footer_item == "social" %}{{ actions(index.social.items ? index.social.items : config.theme_config.demo.social.items, "social") }}{% endif %}
                         {% if footer_item == "footer" %}{{ markdown_by_paragraph(index.footer.content ? index.footer.content : config.theme_config.demo.footer.content, "footer") }}{% endif %}
                     </div>
                 {% endfor %}
@@ -42,7 +42,7 @@
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
         <div class="container">
-            {{ markdown_by_paragraph(index.copyright.content ? index.copyright.content|markdown(singleLine=true) : "Copyright &copy; Your Website 2021", "copyright") }}
+            {{ markdown_by_paragraph(index.copyright.content == "auto" ? "Copyright &copy; " ~ (index.title ? index.title : site_title) ~ " " ~ date()|date('Y') : index.copyright.content ? index.copyright.content|markdown(singleLine=true) : "Copyright &copy; Your Website 2021", "copyright") }}
         </div>
     </div>
 {% endif %}
