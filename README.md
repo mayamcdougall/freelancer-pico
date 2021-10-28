@@ -1,3 +1,10 @@
+<!--
+# Freelancer for Pico v2.0.1 (https://github.com/mayamcdougall/freelancer-pico)
+# Ported by Maya McDougall (https://github.com/mayamcdougall)
+# Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+# Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+-->
+
 # Freelancer Theme for Pico
 This Theme is a port of the wonderful [Freelancer][] Theme from [Start Bootstrap][], optimized for [PicoCMS][].
 
