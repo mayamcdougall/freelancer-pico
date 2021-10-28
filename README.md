@@ -18,7 +18,8 @@ To use this theme:
 
 1. Download the [Latest Release][] on GitHub (*or* clone the repo directly into your Pico `themes` folder).
 2. Extract all files to `themes/freelancer-pico` folder within your Pico installation.
-3. Configure your website using `index.md` and the YAML options described in [Index Configuration](#index-configuration) below.
+3. Set your `theme` to `freelancer-pico` in Pico's `config.yml`.
+4. Configure your website using `index.md` and the YAML options described in [Index Configuration](#index-configuration) below.
     - There's an optional starter template you can use if you want.  Simply copy `index-sample.md` to your `content` folder and rename it `index.md`.  It comes with every possible config option, with the proper YAML indentation, but starts commented out.
     - Simply uncomment (remove the `#`) the lines you need and their respective parents.
 4. Add items to your portfolio by adding `.md` files. Portfolio items have a few configuration options, so see [Page Configuration](#page-configuration) below for more details.
