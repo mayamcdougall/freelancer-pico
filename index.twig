@@ -16,7 +16,7 @@
         {% set portfolio_items = portfolio_items|merge([page]) %}
     {% endfor %}
 
-    {% if not portfolio_items %}
+    {% if not portfolio_items or "Pico is a stupidly simple" in index.description %}
         {% set portfolio_items = config.theme_config.demo.portfolio_items %}
     {% endif %}
 {% endif %}
