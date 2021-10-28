@@ -4,7 +4,7 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
 */
 /*!
- * Freelancer for Pico v2.0.1 (https://github.com/mayamcdougall/freelancer-pico)
+ * Freelancer for Pico v2.0.2 (https://github.com/mayamcdougall/freelancer-pico)
  * Ported by Maya McDougall (https://github.com/mayamcdougall)
  * Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
  * Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
