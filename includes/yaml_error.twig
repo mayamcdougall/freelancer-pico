@@ -5,8 +5,10 @@
  # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
  #}
 {% set pages_with_error = [] %}
-{% for page in pages(depthOffset= -1) if page.meta.YAML_ParseError %}
-    {% set pages_with_error = pages_with_error|merge([{"id": page.id, "error": page.meta.YAML_ParseError}]) %}
+{% for page in pages(depthOffset=-1,depth=null) %}
+    {% if page.meta.YAML_ParseError %}
+        {% set pages_with_error = pages_with_error|merge([{"id": page.id, "error": page.meta.YAML_ParseError}]) %}
+    {% endif %}
 {% endfor %}
 
 {% for page in pages_with_error %}

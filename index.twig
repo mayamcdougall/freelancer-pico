@@ -12,8 +12,10 @@
 
 {% if not index.portfolio.disabled %}
     {% set portfolio_items = [] %}
-    {% for page in pages() if not page.hidden %}
-        {% set portfolio_items = portfolio_items|merge([page]) %}
+    {% for page in pages() %}
+        {% if not page.hidden %}
+            {% set portfolio_items = portfolio_items|merge([page]) %}
+        {% endif %}
     {% endfor %}
 
     {% if not portfolio_items or "Pico is a stupidly simple" in index.description %}
