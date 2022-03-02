@@ -75,17 +75,17 @@ The following items are root-level, don't need to be indented, and don't have su
 
 - **title** - This is the standard Pico title header.  If a title is given on your index page, it will be used *instead* of Pico's `site_title` config option, and will be displayed on your Navbar and under your avatar image.
 
-- **og_image** - The path to an "Open Graph" standard image (eg `og_image: %assets_url%/og_image.png`).  This is the little preview image that displays when someone shares your URL via most modern messaging apps.
+- **og_image** - The path to an "Open Graph" standard image (eg `og_image: "%assets_url%/og_image.png"`).  This is the little preview image that displays when someone shares your URL via most modern messaging apps.
 
 - **robots** - PicoCMS's default handling of the `robots` meta option. Whatever you enter here (eg `noindex, nofollow`) will be put in the `content` attribute of the meta robots tag.
 
-- **css** - The path to a custom `.css` file (eg `%assets_url%/styles.css`) that you can use to override and augment this theme's css styles.  You can also specify multiple files by using the relevant YAML notation.  See [Color Customization](#color-customization) for additional information on styling.
+- **css** - The path to a custom `.css` file (eg `"%assets_url%/styles.css"`) that you can use to override and augment this theme's css styles.  You can also specify multiple files by using the relevant YAML notation.  See [Color Customization](#color-customization) for additional information on styling.
 
 ```
 # Example with multiple files.
 css:
-  - %assets_url%/styles1.css
-  - %assets_url%/styles2.css
+  - "%assets_url%/styles1.css"
+  - "%assets_url%/styles2.css"
 ```
 
 - **fonts** - The url or path to a custom font via a CSS stylesheet.  You can provide your own, or use a Google Fonts API url to easily add more fonts.  You can also specify multiple files by using the relevant YAML notation.
@@ -100,7 +100,7 @@ fonts:
 
 The `header` section contains configuration related to Freelancer's masthead (the big header at the top of the page containing your avatar).
 
-- **avatar** - The path to your avatar image (eg, `%assets_url%/avatar.png`).
+- **avatar** - The path to your avatar image (eg, `"%assets_url%/avatar.png"`).
 
 - **avatar_alt** - Accessibility `alt` text for your avatar image.  Optional, and probably not necessary unless your image conveys extra information that needs an accessibility explanation.
 
@@ -113,7 +113,7 @@ The `header` section contains configuration related to Freelancer's masthead (th
 ```
 # Example Config
 header:
-  avatar: %assets_url%/avatar.png
+  avatar: "%assets_url%/avatar.png"
   divider: pen
   skills: Writer, Blogger, Journalist.
 ```
@@ -213,7 +213,7 @@ contact:
   divider: envelope
   form:
     enabled: true
-    action: %assets_url%/email.php
+    action: "%assets_url%/email.php"
     method: POST
 ```
 
@@ -406,7 +406,7 @@ Don't forget to apply the proper indentation no matter where you're using them!
 actions:
   - icon: download
     content: Free Download!
-    link: %assets_url%/download.zip
+    link: "%assets_url%/download.zip"
   - icon: external-link-alt
     content: Learn More
     link: http://example.com

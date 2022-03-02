@@ -9,10 +9,10 @@
 # Or in the included README.md.
 
 # Title: Freelancer
-# og_image: %assets_url%/og_image.png
-# css: %assets_url%/styles.css
+# og_image: "%assets_url%/og_image.png"
+# css: "%assets_url%/styles.css"
 # header:
-#   avatar: %assets_url%/avatar.png
+#   avatar: "%assets_url%/avatar.png"
 #   avatar_alt: Alt Text for My Avatar
 #   divider: star
 #   skills: Graphic Artist - Web Designer - Illustrator
