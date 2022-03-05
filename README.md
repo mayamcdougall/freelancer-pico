@@ -236,7 +236,7 @@ contact:
   - title: Twitter
     icon: twitter
     brands: true
-    content: @my_name_1234
+    content: "@my_name_1234"
     link: https://twitter.com/my_name_1234
   - title: Email
     icon: envelope
