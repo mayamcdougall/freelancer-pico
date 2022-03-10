@@ -18,7 +18,17 @@
                 <div class="divider-custom-icon"><i class="fas fa-{{ meta.divider ? meta.divider : 'star' }}"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            {% if meta.image %}<img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="{{ meta.image_alt }}" />{% endif %}
+            {% if meta.video %}
+                <video class="img-fluid rounded mb-5 d-block mx-auto" {% if meta.image %} poster="{{ meta.image|url }}" {% endif %} controls>
+                    {% set sources = meta.video is iterable ? meta.video : [meta.video] %}
+                    {% for source in sources %}
+                        <source src="{{ source|url }}" type="video/{{ source|split(".")|last }}">
+                    {% endfor %}
+                    Your browser does not support this video!
+                </video>
+            {% elseif meta.image %}
+                <img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="{{ meta.image_alt }}" />
+            {% endif %}
             {{ content }}
             {{ actions(meta.actions, "single_page") }}
         </div>

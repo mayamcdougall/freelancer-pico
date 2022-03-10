@@ -11549,12 +11549,6 @@ html {
   margin-bottom: 1.5rem !important;
 }
 
-/* Block & Center Portfolio Images and Videos */
-.img-fluid {
-  display: block;
-  margin: auto;
-}
-
 /* Upstream changes? (Found in Bootstarp Builder) */
 a {
   text-decoration: none;
