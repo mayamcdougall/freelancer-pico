@@ -104,7 +104,7 @@ The `header` section contains configuration related to Freelancer's masthead (th
 
 - **avatar_alt** - Accessibility `alt` text for your avatar image.  Optional, and probably not necessary unless your image conveys extra information that needs an accessibility explanation.
 
-- **divider** - The [Font Awesome][] icon to use in the divider underneath this section's header.  You can search [Font Awesome][]'s website for available icon names.  You should only enter the name of the icon, without its `fa-` prefix. Please note, only free icons are supported in this theme.
+- **divider** - The [Font Awesome][] icon to use in the divider underneath this section's header.  You can search [Font Awesome][]'s website or browse the [FontAwesome v5 Cheatsheet](https://fontawesome.com/v5/cheatsheet) for available icon names.  You should only enter the name of the icon, without its `fa-` prefix. Please note, only free icons are supported in this theme.
 
 - **skills** - A list of your personal skills (or anything other text) you'd like displayed under the divider in your masthead.
 
