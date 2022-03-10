@@ -24,7 +24,21 @@
                                     <div class="divider-custom-icon"><i class="fas fa-{{portfolio_item.meta.divider ? portfolio_item.meta.divider : 'star' }}"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
-                                {% if portfolio_item.meta.image %}
+                                {% if portfolio_item.meta.video %}
+                                    <!-- Portfolio Modal - Video-->
+                                    <video class="img-fluid rounded mb-5" {% if portfolio_item.meta.image %} poster="{{ portfolio_item.meta.image|url }}" {% endif %} controls>
+                                        {% set sources = portfolio_item.meta.video is iterable ? portfolio_item.meta.video : [portfolio_item.meta.video] %}
+                                        {% for source in sources %}
+                                            <source src="{{ source|url }}" type="video/{{ source|split(".")|last }}">
+                                        {% endfor %}
+                                        Your browser does not support this video!
+                                    </video>
+                                    <script>
+                                        jQuery('#portfolioModal{{ loop.index }}').on('hidden.bs.modal', function (e) {
+                                            jQuery('#portfolioModal{{ loop.index }} video').trigger('pause');
+                                        });
+                                    </script>
+                                {% elseif portfolio_item.meta.image %}
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ portfolio_item.meta.image|url }}" alt="{{ portfolio_item.meta.image_alt }}" />
                                 {% endif %}

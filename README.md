@@ -360,6 +360,17 @@ The `content` of your pages (below the YAML header) will be used for the main bo
 
 - **thumbnail_alt** - Accessibility `alt` text for your thumbnail in the portfolio gallery.  Optional, and defaults to using your `title` if not provided.
 
+- **video** - An optional video to use for your portfolio item or standalone page.  This video is displayed at the top of the modal view or page, just under the `h1` heading.
+  - This video offers controls and does not autoplay itself.
+  - If an `image` is also specified, it will be used as the `poster` for the video.
+  - The video's MIME type is derived automatically from whatever comes after the last `.` in the file path provided.
+
+- **thumbnail_video** - A thumbnail video for your portfolio item.
+  - This video will autoplay, be muted, have no controls, and automatically loop when it's finished.
+  - If a `thumbnail` is also specified, it will be used as the `poster` for the video.
+  - The video's MIME type is derived automatically from whatever comes after the last `.` in the file path provided.
+  -  You'll want to stick to a similar size or aspect ratio as the `thumbnail` images (`900x650` pixels) for the best looking result.
+
 - **actions** - Add buttons to the bottom of your portfolio modal or standalone page.  See the [Actions section](#actions) below for details.
 
 ```
