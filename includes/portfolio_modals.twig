@@ -6,7 +6,8 @@
  #}
 <!-- Portfolio Modals-->
 {% from "includes/actions.twig" import actions %}
-{% for portfolio_item in portfolio_items %} 
+{% from "includes/video.twig" import video %}
+{% for portfolio_item in portfolio_items %}
     <!--{{ " Portfolio Modal  " ~ loop.index ~ " " }}-->
     <div class="portfolio-modal modal fade" id="portfolioModal{{ loop.index }}" tabindex="-1" aria-labelledby="portfolioModal{{ loop.index }}" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -26,18 +27,7 @@
                                 </div>
                                 {% if portfolio_item.meta.video %}
                                     <!-- Portfolio Modal - Video-->
-                                    <video class="img-fluid rounded mb-5 d-block mx-auto" {% if portfolio_item.meta.image %} poster="{{ portfolio_item.meta.image|url }}" {% endif %} controls>
-                                        {% set sources = portfolio_item.meta.video is iterable ? portfolio_item.meta.video : [portfolio_item.meta.video] %}
-                                        {% for source in sources %}
-                                            <source src="{{ source|url }}" type="video/{{ source|split(".")|last }}">
-                                        {% endfor %}
-                                        Your browser does not support this video!
-                                    </video>
-                                    <script>
-                                        jQuery('#portfolioModal{{ loop.index }}').on('hidden.bs.modal', function (e) {
-                                            jQuery('#portfolioModal{{ loop.index }} video').trigger('pause');
-                                        });
-                                    </script>
+                                    {{ video(portfolio_item.meta.video, portfolio_item.meta.image, "portfolio_modal", loop.index) }}
                                 {% elseif portfolio_item.meta.image %}
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ portfolio_item.meta.image|url }}" alt="{{ portfolio_item.meta.image_alt }}" />

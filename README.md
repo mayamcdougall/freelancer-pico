@@ -44,7 +44,7 @@ This Pico port also adds limited support for having *additional*, standalone pag
 
 Pico has several choices when it comes to ordering your pages (alphabetically, by date, or using a page meta property).  With Freelancer, page order is used to determine the order of your portfolio items.  You can change it in Pico's `config.yml` by changing the `pages_order_by` property.
 
-```
+```yaml
 # Example of Alphabetical order:
 pages_order_by: alpha
 pages_order: asc
@@ -52,7 +52,7 @@ pages_order: asc
 
 Optionally, if you'd like your portfolio items to instead display in a *specific*, static order, you can set `pages_order_by` to `meta`, change `pages_order_by_meta` to `index`, and then give each page an `index` value in its metadata (eg `index: 0`, `index: 1` and so on).  You'll probably also want to set your `pages_order` to ascending (`asc`) if it's not already.
 
-```
+```yaml
 # Example of a Static order, using an `index` metadata value
 pages_order_by_meta: index
 pages_order_by: meta
@@ -81,7 +81,7 @@ The following items are root-level, don't need to be indented, and don't have su
 
 - **css** - The path to a custom `.css` file (eg `"%assets_url%/styles.css"`) that you can use to override and augment this theme's css styles.  You can also specify multiple files by using the relevant YAML notation.  See [Color Customization](#color-customization) for additional information on styling.
 
-```
+```yaml
 # Example with multiple files.
 css:
   - "%assets_url%/styles1.css"
@@ -90,7 +90,8 @@ css:
 
 - **fonts** - The url or path to a custom font via a CSS stylesheet.  You can provide your own, or use a Google Fonts API url to easily add more fonts.  You can also specify multiple files by using the relevant YAML notation.
 
-```
+```yaml
+# Example with multiple files.
 fonts:
   - https://fonts.googleapis.com/css?family=Roboto
   - https://fonts.googleapis.com/css?family=Ubuntu
@@ -110,8 +111,8 @@ The `header` section contains configuration related to Freelancer's masthead (th
 
 - **disabled** - Set this to `true` if you'd like to disable this section of the page.
 
-```
-# Example Config
+```yaml
+# Example Header Section
 header:
   avatar: "%assets_url%/avatar.png"
   divider: pen
@@ -130,8 +131,8 @@ The `nav` section contains configuration related to the navigation bar.
 
 - **disabled** - Set this to `true` if you'd like to disable the navbar.
 
-```
-# Example Config
+```yaml
+# Example Nav Section
 nav:
   portfolio: Projects
   about: About
@@ -150,8 +151,8 @@ The `portfolio` section contains configuration related to the portfolio gallery.
 
 - **disable_close_buttons** - Set this to `true` if you don't want your portfolio modal popups to have the `Close Window` button at the bottom (they will still have an `X` at the top of the window).
 
-```
-# Example Config
+```yaml
+# Example Portfolio Section
 portfolio:
   title: Recent Projects
   divider: clock
@@ -170,7 +171,7 @@ The `about` section contains configuration related to the about section of the p
 
 - **disabled** - Set this to `true` if you'd like to disable the `about` section.
 
-```
+```yaml
 # Example Config
 about:
   title: About Me
@@ -206,7 +207,7 @@ The `contact` section lets you configure and display your contact information, e
 
   - **method** - The `method` attribute of your contact form, usually `GET` or `POST` depending on your backend.
 
-```
+```yaml
 # Example of a contact section using a contact form.
 contact:
   title: Get in Touch
@@ -229,7 +230,7 @@ contact:
 
   - **link** - The destination URL for your contact method.  Turns the `content` into a link.
 
-```
+```yaml
 # Example of a contact section using icons
 contact:
   items:
@@ -254,7 +255,7 @@ The `location` section is located at the far left of the footer.  It can hold a 
 
 - **disabled** - Set this to `true` if you'd like to disable the `location` section.
 
-```
+```yaml
 # Example Location Section
 location:
   title: Address
@@ -279,7 +280,7 @@ The `social` section is located in the middle of the footer.  It can generate se
 
   - **link** - The destination URL for your social icon.
 
-```
+```yaml
 # Example Social Section
 social:
   title: Find Me On
@@ -304,7 +305,7 @@ The `footer` section is the "About" section located on the far right of the foot
 
 - **disabled** - Set this to `true` if you'd like to disable the `footer` section.
 
-```
+```yaml
 # Example Footer Section
 footer:
   title:
@@ -323,13 +324,13 @@ The `copyright` section is the copyright block located at the very bottom of the
 
 - **disabled** - Set this to `true` if you'd like to disable the `copyright` section.
 
-```
+```yaml
 # Example Single-Line Copyright
 copyright: 
   content: Copyright &copy; Myself 2021
 ```
 
-```
+```yaml
 # Example Multi-Line Copyright
 copyright: 
   content: |
@@ -360,20 +361,52 @@ The `content` of your pages (below the YAML header) will be used for the main bo
 
 - **thumbnail_alt** - Accessibility `alt` text for your thumbnail in the portfolio gallery.  Optional, and defaults to using your `title` if not provided.
 
-- **video** - An optional video to use for your portfolio item or standalone page.  This video is displayed at the top of the modal view or page, just under the `h1` heading.
+- **video** - An optional video to use for your modal or standalone page.  This video is displayed at the top of the modal view or page, just under the `h1` heading.
   - This video offers controls and does not autoplay itself.
   - If an `image` is also specified, it will be used as the `poster` for the video.
-  - The video's MIME type is derived automatically from whatever comes after the last `.` in the file path provided.
+  - The video's MIME type will attempt to be identified using its file extension, by checking whatever comes after the last `.` in the file path provided, against a list of common types.  If this fails, the video tag's `type` attribute will be omitted to give the browser a chance to identify the video itself.  If you'd like to provide a MIME type, you can do so using array YAML notation.  Just wrap the file path in brackets `[]` and add the MIME type, separated by a comma.  Any provided MIME type will override an autodetected one.
+  - `video` also supports multiple sources (with or without MIME types as well.)  You can specify each source on a new line with an indented dash `-`.  The browser will play the first supported source it can find.
 
-- **thumbnail_video** - A thumbnail video for your portfolio item.
+```yaml
+# Example Video
+video: "%assets_url%/video.mp4"
+```
+
+```yaml
+# Example Video with MIME Type
+video: ["%assets_url%/video.mp4", "video/mp4"]
+```
+
+```yaml
+# Example Video with Multiple Sources
+video:
+  - "%assets_url%/video.mp4"
+  - "%assets_url%/video.mov"
+```
+
+- **thumbnail_video** - A thumbnail video to use for your portfolio item instead of a thumbnail image.  A short looping video will work best for this.
   - This video will autoplay, be muted, have no controls, and automatically loop when it's finished.
+  - Unlike with images, `thumbnail_video` and `video` are completely separate items and won't be substituted in for one another.
   - If a `thumbnail` is also specified, it will be used as the `poster` for the video.
-  - The video's MIME type is derived automatically from whatever comes after the last `.` in the file path provided.
   -  You'll want to stick to a similar size or aspect ratio as the `thumbnail` images (`900x650` pixels) for the best looking result.
+  - The video's MIME type will attempt to be identified using its file extension, by checking whatever comes after the last `.` in the file path provided, against a list of common types.  If this fails, the video tag's `type` attribute will be omitted to give the browser a chance to identify the video itself.  If you'd like to provide a MIME type, you can do so using array YAML notation.  Just wrap the file path in brackets `[]` and add the MIME type, separated by a comma.  Any provided MIME type will override an autodetected one.
+  - `thumbnail_video` also supports multiple sources (with or without MIME types as well.)  You can specify each source on a new line with an indented dash `-`.  The browser will play the first supported source it can find.
+
+```yaml
+# Example Thumbnail Video
+thumbnail_video: "%assets_url%/thumbnail.mp4"
+```
+
+```yaml
+# Example Thumbnail Video with Multiple Sources
+thumbnail_video:
+  - "%assets_url%/thumbnail.mp4"
+  - "%assets_url%/thumbnail.mov"
+```
 
 - **actions** - Add buttons to the bottom of your portfolio modal or standalone page.  See the [Actions section](#actions) below for details.
 
-```
+```yaml
 ---
 # Example Gallery Item / Standalone Page
 Title: Awesome Thing
@@ -412,7 +445,7 @@ Don't forget to apply the proper indentation no matter where you're using them!
 
   - **disabled** - Set this to `true` if you'd like to disable this button.  For privacy reasons, if you disable a button, the URL of its `link` property will **not** be included in the HTML of the page.
 
-```
+```yaml
 # Example Actions
 actions:
   - icon: download
@@ -456,7 +489,7 @@ If you have any ideas for how to improve this while keeping faithful to the orig
 
 The following color variables are available for use in your own CSS Stylesheet.  There are also plenty more Bootstrap color variables available, however they go mostly unused out-of-the-box.
 
-```
+```css
 :root {
   /* Default Bootstrap Colors */
   --bs-primary: #1abc9c; /* Primary Color */

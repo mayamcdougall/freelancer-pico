@@ -1,0 +1,41 @@
+{#!
+ # Freelancer for Pico v2.0.6 (https://github.com/mayamcdougall/freelancer-pico)
+ # Ported by Maya McDougall (https://github.com/mayamcdougall)
+ # Based on upstream Freelancer v7.0.4 by Start Bootstrap (https://startbootstrap.com/theme/freelancer)
+ # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
+ #}
+{% macro video(video, image, mode, loop_index=0) %}
+    {% set known_video_types = {
+        "3gp":"video/3gpp",
+        "3g2":"video/3gpp2",
+        "avi":"video/x-msvideo",
+        "mpg":"video/mpeg",
+        "mpeg":"video/mpeg",
+        "mp4":"video/mp4",
+        "mov":"video/quicktime",
+        "ogv":"video/ogg",
+        "ts":"video/mp2t",
+        "qt":"video/quicktime",
+        "webm":"video/webm",
+        "wmv":"video/x-ms-wmv",
+    } %}
+    <video class="img-fluid rounded d-block mx-auto{% if mode == "content" %} mb-5{% endif %}" {% if image %} poster="{{ image|url }}" {% endif %} {% if mode == "portfolio" %} autoplay muted loop {% else %} controls {% endif %}>
+        {% set sources = video is iterable and (not (video[1] starts with "video/") or ("." in video[1])) ? video : [video] %}
+        {% for source in sources %}
+            {% if source is iterable %}
+                {% set mime = source[1] %}
+            {% else %}
+                {% set mime = known_video_types[source|split(".")|last] %}
+            {% endif %}
+            <source src="{{ source is iterable ? source[0]|url : source|url }}" {% if mime %} type="{{ mime }}" {% endif %}>
+        {% endfor %}
+        Your browser does not support this video!
+    </video>
+    {% if mode == "portfolio_modal" %}
+        <script>
+            jQuery('#portfolioModal{{ loop_index }}').on('hidden.bs.modal', function (e) {
+                jQuery('#portfolioModal{{ loop_index }} video').trigger('pause');
+            });
+        </script>
+    {% endif %}
+{% endmacro %}

@@ -6,6 +6,7 @@
  #}
 {% from "includes/markdown_by_paragraph.twig" import markdown_by_paragraph %}
 {% from "includes/actions.twig" import actions %}
+{% from "includes/video.twig" import video %}
 <!-- Content Section-->
 <section class="page-section content" id="content">
     <div class="container">
@@ -19,13 +20,7 @@
                 <div class="divider-custom-line"></div>
             </div>
             {% if meta.video %}
-                <video class="img-fluid rounded mb-5 d-block mx-auto" {% if meta.image %} poster="{{ meta.image|url }}" {% endif %} controls>
-                    {% set sources = meta.video is iterable ? meta.video : [meta.video] %}
-                    {% for source in sources %}
-                        <source src="{{ source|url }}" type="video/{{ source|split(".")|last }}">
-                    {% endfor %}
-                    Your browser does not support this video!
-                </video>
+                {{ video(meta.video, meta.image, "content") }}
             {% elseif meta.image %}
                 <img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="{{ meta.image_alt }}" />
             {% endif %}
