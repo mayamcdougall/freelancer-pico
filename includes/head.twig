@@ -24,10 +24,10 @@
     <!-- Core theme JS-->
     <script> var single_page_mode = {{ single_page_mode ? "true" : "false" }};</script>
     <script src="{{ theme_url }}/js/scripts.js"></script>
+    <script src="{{ theme_url }}/js/jquery.min.js"></script>
 
     {# Contact Form Scripts #}
     {% if index.contact.form.enabled and not index.contact.disabled and not single_page_mode %}
-        <script src="{{ theme_url }}/js/jquery.min.js"></script>
         <script src="{{ theme_url }}/js/contact.js"></script>
     {% endif %}
 
