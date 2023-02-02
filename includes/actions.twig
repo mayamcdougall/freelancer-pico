@@ -44,8 +44,7 @@
             {% if action.close_button %}
                 {% set classes = classes|merge(["d-block", "mx-auto", "mt-4"]) %}
             {% endif %}
-
-            {{ action.close_button ? '<button data-bs-dismiss="modal"' : "<a" }} class="{{ classes|join(" ") }}" {% if action.link and not action.disabled %} href="{{ action.link|url }}" {% endif %}>
+            {{ action.close_button ? '<button data-bs-dismiss="modal"' : "<a" }} class="{{ classes|join(" ") }}" {% if action.link and not action.disabled %}{{ mode == "social" and action.icon == "mastodon" ? 'rel="me" ' : "" }}href="{{ action.link|url }}" {% endif %}>
                 {% if action.icon %}
                     <i class="{{ [(action.brands ? 'fab' : 'fas'), 'fa-fw', ('fa-' ~ action.icon), (mode != 'social' ? 'me-2')]|join(' ')}}"></i>
                 {% endif %}
